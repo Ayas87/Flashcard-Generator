@@ -5,7 +5,7 @@ class ClozeCard {
     }
 
     printCloze(){
-        console.log(this.cloze);
+        return this.cloze;
     }
     printPartial(){
         console.log(this.text);
