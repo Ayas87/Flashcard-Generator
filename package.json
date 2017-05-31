@@ -5,7 +5,8 @@
   "description": "Cloze Flashcards",
   "main": "flashcard.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./flashcard.js"
   },
   "repository": {
     "type": "git",
