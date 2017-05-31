@@ -1,0 +1,13 @@
+.sample {
+    background-color: grey;
+    text-align: center;
+    font-weight: 700;
+    padding: 40px;
+    color: red;
+    margin-bottom: 15px;
+}
+
+.basic-card, .cloze-card {
+    padding: 10px;
+    border: 3px black solid;
+}
