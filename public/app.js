@@ -1,20 +1,22 @@
-$('.sample').on('click', function(data){
-    if($('.sample').attr('side') === 'front'){
-            $('.sample').html(data.back);
-            $('.sample').attr('side','back');
+let cards = "these are default cards";
+
+$('#card-text').on('click', function(data){
+    if($('#card-text').attr('side') === 'front'){
+            $('#card-text').html(data.back);
+            $('#card-text').attr('side','back');
     } else {
-            $('.sample').html(data.front);
-            $('.sample').attr('side','front');
+            $('#card-text').html(data.front);
+            $('#card-text').attr('side','front');
     }
 });
 
 //Basic Form Submit
 $("#basicForm").submit(function(e) {
     e.preventDefault(); // Prevents the page from refreshing
-    var $this = $(this); // `this` refers to the current form element
+    let $this = $(this); // `this` refers to the current form element
     $.post($this.attr("action"), $this.serialize(), (data) => {
-            $('.sample').html(data.front);
-            $('.sample').attr('side','front');
+            $('#card-text').html(data.front);
+            $('#card-text').attr('side','front');
         },"json"
     );
 });
@@ -22,10 +24,23 @@ $("#basicForm").submit(function(e) {
 //Cloze Form Submit
 $("#clozeForm").submit(function(e) {
     e.preventDefault(); // Prevents the page from refreshing
-    var $this = $(this); // `this` refers to the current form element
+    let $this = $(this); // `this` refers to the current form element
     $.post($this.attr("action"), $this.serialize(),(data) => {
-            $('.sample').html(data.text);
-            $('.sample').attr('side','text');
+            $('#card-text').html(data.text);
+            $('#card-text').attr('side','text');
         },"json"
     );
 });
+
+//Get data
+$('#btn-update').on('click',()=>{
+    $.get('/',(cardData)=>{
+        console.log('get was called ' + cardData)
+        cards = cardData;
+    })
+})
+
+//Render data
+$('#btn-next').on('click',()=>{
+    $('#card-text').html('<h1>Hello World!</h1>')
+})

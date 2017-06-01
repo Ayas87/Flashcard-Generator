@@ -1,5 +1,5 @@
-const BasicCard = require('./BasicCard.js');
-const ClozeCard = require('./ClozeCard.js');
+const BasicCard = require('./private/BasicCard.js');
+const ClozeCard = require('./private/ClozeCard.js');
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
@@ -19,7 +19,7 @@ function appendBasic (param) {
     const options = {
         encoding: 'utf8',
     };
-    fs.appendFileSync('basic.json',JSON.stringify(param) + '\n',[options]);
+    fs.appendFileSync('private/cards/basic/basic.json',JSON.stringify(param) + '\n',[options]);
     console.log(param);
 }
 
@@ -27,25 +27,29 @@ function appendCloze (param) {
     const options = {
         encoding: 'utf8',
     };
-    fs.appendFileSync('cloze.json',JSON.stringify(param) + '\n',[options]);
+    fs.appendFileSync('private/cards/cloze/cloze.json',JSON.stringify(param) + '\n',[options]);
     console.log(param);
 }
 
-//Basic Card
-app.post('/', urlencodedParser, function (req, res) {
+//Make Cards
+app.post('/', urlencodedParser,  (req, res)=> {
   if (!req.body){
      return res.sendStatus(400);   
   }
-  const basicCard = new BasicCard(req.body.front, req.body.back);
-  appendBasic(basicCard);
-  res.send(basicCard);
-});
-//Cloze Card
-app.post('/', urlencodedParser, function (req, res) {
-  if (!req.body){
-     return res.sendStatus(400);   
+  if(req.body.front) {
+    const basicCard = new BasicCard(req.body.front, req.body.back);
+    appendBasic(basicCard);
+    res.send(basicCard);
+  } else if (req.body.text) {
+    const clozeCard = new ClozeCard(req.body.text, req.body.cloze);
+    appendCloze(clozeCard);
+    res.send(clozeCard);
   }
-  const clozeCard = new ClozeCard(req.body.front, req.body.back);
-  appendCloze(clozeCard);
-  res.send(clozeCard);
 });
+
+// //Return Cards
+app.get('/',(req,res)=>{
+  console.log(res.body);
+  console.log('get request was made');
+  res.send(console.log('this is my data'));
+})

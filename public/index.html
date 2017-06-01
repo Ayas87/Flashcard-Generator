@@ -13,38 +13,48 @@
 
 <body>
     <div class='container'>
-        <div class='card'>
-        </div>
-
-        <div class='row'>
-            <!--Basic-->
-            <div class='col-md-6'>
-                <div class='basic-card'>
-                    <form action='/' method'get' id='basicForm'>
-                        <fieldset>
-                        <legend>Basic Card</legend>
-                        <label for='front'>Front</label>
-                        <input type='text' id='front' name='front'>
-                        <label for='back'>Back</label>
-                        <input type='text' id='back' name='back'>
-                        <input type='submit' class='btn btn-info' id='btn-basic' value='Add Basic Card'>
-                        </fieldset>
-                    </form>
+        <div class='col-md-12' id='main'>
+            <div class='row'>
+                <!--Display Cards-->
+                <div class='col-md-8' id='card'>
+                    <div id='card-text'>
+                        <h2>testing</h2>
+                    </div>
                 </div>
+
             </div>
-            <!--Cloze-->
-            <div class='col-md-6'>
-                <div class='cloze-card'>
-                    <form action='/' method'get' id='clozeForm'>
-                        <fieldset>
-                        <legend>Cloze Card</legend>
-                        <label for='front'>Front</label>
-                        <input type='text' id='text' name='text'>
-                        <label for='back'>Back</label>
-                        <input type='text' id='cloze' name='cloze'>
-                        <input type='submit' class='btn btn-info' id='btn-basic' value='Add Cloze Card'>
-                        </fieldset>
-                    </form>
+            <button class='btn btn-warning' id='btn-update'>Update Cards</button>
+            <button class='btn btn-danger' id='btn-next'>Next Card</button>
+            <div class='row'>
+                <!--Basic-->
+                <div class='col-md-6'>
+                    <div id='basic-card'>
+                        <form action='/' method 'get' id='basicForm'>
+                            <fieldset>
+                                <legend>Basic Card</legend>
+                                <label for='front'>Front</label>
+                                <input type='text' id='front' name='front'>
+                                <label for='back'>Back</label>
+                                <input type='text' id='back' name='back'>
+                                <input type='submit' class='btn btn-info' id='btn-basic' value='Add Basic Card'>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <!--Cloze-->
+                <div class='col-md-6'>
+                    <div id='cloze-card'>
+                        <form action='/' method 'get' id='clozeForm'>
+                            <fieldset>
+                                <legend>Cloze Card</legend>
+                                <label for='front'>Text</label>
+                                <input type='text' id='text' name='text'>
+                                <label for='back'>Cloze</label>
+                                <input type='text' id='cloze' name='cloze'>
+                                <input type='submit' class='btn btn-info' id='btn-basic' value='Add Cloze Card'>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
