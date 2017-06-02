@@ -34,13 +34,12 @@ $("#clozeForm").submit(function(e) {
 
 //Get data
 $('#btn-update').on('click',()=>{
-    $.get('/',(cardData)=>{
-        console.log('get was called ' + cardData)
-        cards = cardData;
-    })
-})
+    $.get('/private/cards',(data)=>{
+        data[]
+    });
+});
 
 //Render data
 $('#btn-next').on('click',()=>{
     $('#card-text').html('<h1>Hello World!</h1>')
-})
+});

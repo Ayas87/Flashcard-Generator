@@ -10,24 +10,19 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 // Define the port to run on
 app.set('port', 3000);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'private')));
 // Listen for requests
 const server = app.listen(app.get('port'), function() {
   const port = server.address().port;
 });
 
 function appendBasic (param) {
-    const options = {
-        encoding: 'utf8',
-    };
-    fs.appendFileSync('private/cards/basic/basic.json',JSON.stringify(param) + '\n',[options]);
+    fs.appendFileSync('private/cards/basic/basic.json',JSON.stringify(param) + '\n','utf8');
     console.log(param);
 }
 
 function appendCloze (param) {
-    const options = {
-        encoding: 'utf8',
-    };
-    fs.appendFileSync('private/cards/cloze/cloze.json',JSON.stringify(param) + '\n',[options]);
+    fs.appendFileSync('private/cards/cloze/cloze.json',JSON.stringify(param) + ',','utf8');
     console.log(param);
 }
 
@@ -48,8 +43,13 @@ app.post('/', urlencodedParser,  (req, res)=> {
 });
 
 // //Return Cards
-app.get('/',(req,res)=>{
-  console.log(res.body);
-  console.log('get request was made');
-  res.send(console.log('this is my data'));
-})
+app.get('/private/cards/',(req,res)=>{
+  let response = fs.readFile('private/cards/basic/basic.json', 'utf8',(err, data) => {
+    if (err) throw err;
+    console.log(data)
+    res.send(data);
+  });
+  // console.log(response);
+  
+    // console.log('get request was made' + res);
+});
