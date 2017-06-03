@@ -17,7 +17,7 @@ const server = app.listen(app.get('port'), function() {
 });
 
 function appendBasic (param) {
-    fs.appendFileSync('private/cards/basic/basic.json',JSON.stringify(param) + '\n','utf8');
+    fs.appendFileSync('private/cards/basic/basic.json',JSON.stringify(param) + ', \n','utf8');
     console.log(param);
 }
 
