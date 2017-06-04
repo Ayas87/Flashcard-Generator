@@ -56,7 +56,7 @@ app.get('/api/search/cards',(req,res)=>{
 
 //This is for the assignment, the hosted site is an extra bonus :D
 let sampleBasic = new BasicCard('Donald Trump', 'is the current president of the U.S.');
-console.log('---Basic---')
+console.log('---Basic---');
 console.log('Basic front: ' + sampleBasic.front);
 console.log('Basic back: ' + sampleBasic.back);
 console.log('\n');
@@ -67,8 +67,8 @@ console.log('\n');
 
 
 let sampleCloze = new ClozeCard('George Washington was the first president of the U.S.', 'George Washington');
-console.log('---Cloze---')
+console.log('---Cloze---');
 console.log('Cloze full: ' + sampleCloze.full);
 console.log('Cloze cloze: ' + sampleCloze.cloze);
 console.log('Cloze partial: ' + sampleCloze.partial);
-console.log('---')
+console.log('---');
