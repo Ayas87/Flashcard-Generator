@@ -23,7 +23,7 @@ $("#clozeForm").submit(function(e) {
 
 //Get data
 $('#btn-update').on('click',()=>{
-    $.get('/private/cards',(data)=>{
+    $.get('/api/search/cards',(data)=>{
         cards = JSON.parse(data);
         console.log(cards[0].front);
     });

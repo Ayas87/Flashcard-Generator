@@ -7,12 +7,13 @@ const path = require('path');
 const app = express();
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 // Define the port to run on
 app.set('port', 3000);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'private')));
 // Listen for requests
-const server = app.listen(app.get('port'), function() {
+const server = app.listen(app.get('port'), () => {
   const port = server.address().port;
 });
 
@@ -43,13 +44,31 @@ app.post('/', urlencodedParser,  (req, res)=> {
 });
 
 // //Return Cards
-app.get('/private/cards/',(req,res)=>{
+app.get('/api/search/cards',(req,res)=>{
   let response = fs.readFile('private/cards/basic/basic.json', 'utf8',(err, data) => {
     if (err) throw err;
     console.log(data)
     res.send(data);
   });
-  // console.log(response);
-  
-    // console.log('get request was made' + res);
 });
+
+
+
+//This is for the assignment, the hosted site is an extra bonus :D
+let sampleBasic = new BasicCard('Donald Trump', 'is the current president of the U.S.');
+console.log('---Basic---')
+console.log('Basic front: ' + sampleBasic.front);
+console.log('Basic back: ' + sampleBasic.back);
+console.log('\n');
+
+console.log('---Broken Cloze---')
+let brokenCloze = new ClozeCard ('This Cloze will not work', 'Tim pls help')
+console.log('\n');
+
+
+let sampleCloze = new ClozeCard('George Washington was the first president of the U.S.', 'George Washington');
+console.log('---Cloze---')
+console.log('Cloze full: ' + sampleCloze.full);
+console.log('Cloze cloze: ' + sampleCloze.cloze);
+console.log('Cloze partial: ' + sampleCloze.partial);
+console.log('---')
